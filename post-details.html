@@ -55,10 +55,10 @@
     const title = document.createElement('li');
     const body = document.createElement('li');
 
-    userId.innerText = `userId: ${PostObj.userId}`
-    id.innerText = `id: ${PostObj.id}`;
-    title.innerText = `title: ${PostObj.title}`;
-    body.innerText = `body: ${PostObj.body}`;
+    userId.innerText = `User Id: ${PostObj.userId}`
+    id.innerText = `Id: ${PostObj.id}`;
+    title.innerText = `Title: ${PostObj.title}`;
+    body.innerText = `Body: ${PostObj.body}`;
 
     li.append(userId, id, title, body);
     ul.appendChild(li);
@@ -80,11 +80,11 @@
                 let email = document.createElement('p');
                 let body = document.createElement('p');
 
-                postId.innerText =`postId: ${comment.postId}`;
-                id.innerText =`id: ${comment.id}`;
-                name.innerText =`name: ${comment.name}`;
-                email.innerText =`email: ${comment.email}`;
-                body.innerText = ` body: ${comment.body}`;
+                postId.innerText =`Post Id: ${comment.postId}`;
+                id.innerText =`Id: ${comment.id}`;
+                name.innerText =`Name: ${comment.name}`;
+                email.innerText =`Email: ${comment.email}`;
+                body.innerText = ` Body: ${comment.body}`;
 
                 div1.append(postId, id, name, email, body)
                 div.append(div1);
