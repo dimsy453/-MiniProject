@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    body{
+        margin: 0;
+    }
+    div{
+        width: 100%;
+        height: 100vh;
+        border: 1px solid black;
+        font-size: 1.2em;
+        background-color: rgba(0, 255, 255, 0.25);
+    }
+    button{
+        width: 90%;
+        border: 1px solid black;
+        background-color: rgba(0, 0, 139, 0.21);
+        padding: 5px 10px;
+        margin: 1% 0 0 5%;
+        font-size: 1em;
+        display: inline-block;
+        text-align: center;
+    }
+    div1{
+        width: 19%;
+        height: 20vh;
+        display: inline-grid;
+        margin: 15px 0 10px 15px;
+        border: 1px solid black;
+        text-align:center;
+        background-color: rgba(21, 144, 189, 0.25);
+    }
+    button1{
+        color: darkblue;
+
+    }
+
+
+</style>
+<body>
+
+
+
+
+<script>
+
+    let url = new URL(location.href);
+
+    let UserJSON = url.searchParams.get(`user`)
+    let UsersObj = JSON.parse(UserJSON)
+
+    let ul = document.createElement('ul');
+    let li = document.createElement('li');
+
+
+    const div = document.createElement('div');
+    const  id = document.createElement('li');
+    const name = document.createElement('li');
+    const username = document.createElement('li');
+    const email = document.createElement('li');
+    const street = document.createElement('li');
+    const suite = document.createElement('li');
+    const city = document.createElement('li');
+    const zipcode = document.createElement('li');
+    const lat = document.createElement('li');
+    const lng = document.createElement('li');
+    const phone = document.createElement('li');
+    const website = document.createElement('li');
+    const companyName = document.createElement('li');
+    const catchPhrase = document.createElement('li');
+    const bs = document.createElement('li');
+    const btnPost = document.createElement('button');
+
+    id.innerText = `id: ${UsersObj.id}`
+    name.innerText = `username: ${UsersObj.name}`;
+    username.innerText = `username: ${UsersObj.username}`;
+    email.innerText = `email: ${UsersObj.email}`;
+    phone.innerText = `phone: ${UsersObj.phone}`;
+    street.innerText = `street: ${UsersObj.address.street}`;
+    suite.innerText = `suite: ${UsersObj.address.suite}`;
+    city.innerText = `city: ${UsersObj.address.city}`;
+    zipcode.innerText = `zipcode: ${UsersObj.address.zipcode}`;
+    lat.innerText = `lat: ${UsersObj.address.geo.lat}`;
+    lng.innerText = `lng: ${UsersObj.address.geo.lng}`;
+    website.innerText = `website: ${UsersObj.website}`;
+    companyName.innerText = `companyName: ${UsersObj.company.name}`;
+    catchPhrase.innerText = `catchPhrase: ${UsersObj.company.catchPhrase}`;
+    bs.innerText = `bs: ${UsersObj.company.bs}`;
+    btnPost.innerText = ` POST OF CURRENT - ${UsersObj.name}`;
+
+    li.append(id, name, username, email, street, suite, city, zipcode, lat, lng, phone,website, companyName, catchPhrase, bs);
+    ul.appendChild(li);
+    div.append(ul,btnPost)
+    document.body.append(div)
+
+    btnPost.onclick = function () {
+        let urla = new URL(`https://jsonplaceholder.typicode.com/users/${UsersObj.id}/posts`);
+        fetch(urla)
+            .then(value => value.json())
+            .then(posts => {
+
+                for (const post of posts) {
+
+                    let div1 = document.createElement('div1');
+                    let p = document.createElement('p');
+                    let btn = document.createElement(`button1`)
+
+                    console.log(post);
+
+                    btn.innerText = `  FIND OUT MORE `;
+                    p.innerText = `${post.title}`;
+                    div1.append(p, btn);
+                    div.append(div1);
+
+                    btn.onclick = function () {
+                        location.href = `./post-details.html?post=` + JSON.stringify(post);
+                        console.log(post);
+                    };
+                }
+                document.body.append(div);
+            });
+    };
+
+</script>
+
+</body>
+</html>
