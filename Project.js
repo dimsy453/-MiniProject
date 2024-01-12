@@ -32,7 +32,7 @@ fetch(url)
             let h2 = document.createElement('h2');
             let h1 = document.createElement('h1');
             let btn = document.createElement(`buton`)
-            console.log(user);
+
             btn.innerText = ` DETAILS `;
             h2.innerText = `${user.id}`;
             h1.innerText = `${user.name}`;

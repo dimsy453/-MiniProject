@@ -113,8 +113,6 @@
                     let p = document.createElement('p');
                     let btn = document.createElement(`button1`)
 
-                    console.log(post);
-
                     btn.innerText = `  FIND OUT MORE `;
                     p.innerText = `${post.title}`;
                     div1.append(p, btn);
@@ -122,7 +120,6 @@
 
                     btn.onclick = function () {
                         location.href = `./post-details.html?post=` + JSON.stringify(post);
-                        console.log(post);
                     };
                 }
                 document.body.append(div);
