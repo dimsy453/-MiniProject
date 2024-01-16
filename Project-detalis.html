@@ -102,6 +102,7 @@
     document.body.append(div)
 
     btnPost.onclick = function () {
+        this.disabled = 'disabled';
         let urla = new URL(`https://jsonplaceholder.typicode.com/users/${UsersObj.id}/posts`);
         fetch(urla)
             .then(value => value.json())
@@ -120,8 +121,9 @@
 
                     btn.onclick = function () {
                         location.href = `./post-details.html?post=` + JSON.stringify(post);
-                    };
-                }
+
+                    }
+                };
                 document.body.append(div);
             });
     };
